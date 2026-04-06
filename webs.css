@@ -4,20 +4,20 @@
 ══════════════════════════════════════ */
 
 :root {
-  --white: #FFFFFF;
-  --pink-0: #FFF5F8;
-  --pink-1: #FFE8EF;
-  --pink-2: #FFD6E4;
-  --pink-3: #FFAEC8;
-  --pink-4: #FF85A8;
-  --blush:  #F7C5D5;
-  --rose:   #E8769A;
-  --text-dark: #2D1A24;
-  --text-mid:  #6B4057;
-  --text-light:#A87890;
-  --shadow-soft: 0 8px 40px rgba(232, 118, 154, 0.12);
-  --shadow-card: 0 4px 30px rgba(232, 118, 154, 0.15);
-  --border:  rgba(255, 174, 200, 0.35);
+  --white:  #FFFFFF;
+  --pink-0: #FFF5F5;
+  --pink-1: #FFE8E8;
+  --pink-2: #FFCCCC;
+  --pink-3: #FF9999;
+  --pink-4: #FF6666;
+  --blush:  #FFDDDD;
+  --rose:   #E01A1A;
+  --text-dark: #1A0A0A;
+  --text-mid:  #5C1A1A;
+  --text-light:#A05050;
+  --shadow-soft: 0 8px 40px rgba(224, 26, 26, 0.12);
+  --shadow-card: 0 4px 30px rgba(224, 26, 26, 0.15);
+  --border:  rgba(255, 100, 100, 0.28);
   --radius:  20px;
   --radius-sm: 12px;
   --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -42,38 +42,108 @@ button { cursor: none; font-family: inherit; border: none; outline: none; }
 input, textarea { font-family: inherit; outline: none; }
 
 /* ══════════════════════════════════════
-   CURSOR
+   CURSOR — Unique Crosshair + Ring
 ══════════════════════════════════════ */
+
+/* Hide default */
+*, *::before, *::after { cursor: none !important; }
+
+/* Dot core */
 .cursor {
   position: fixed;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: var(--rose);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
+  left: 0; top: 0;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s, background 0.3s;
-  mix-blend-mode: normal;
+  transition: width 0.2s, height 0.2s, background 0.3s, opacity 0.2s;
+  box-shadow: 0 0 12px rgba(224,26,26,0.8), 0 0 24px rgba(224,26,26,0.4);
 }
 
+/* Crosshair arms - built with pseudo elements on follower */
 .cursor-follower {
   position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--pink-3);
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   pointer-events: none;
   z-index: 9998;
+  left: 0; top: 0;
   transform: translate(-50%, -50%);
-  transition: transform 0.18s ease, width 0.3s, height 0.3s, border-color 0.3s;
+  /* no transition here — JS controls it for lag */
 }
 
-body:has(button:hover) .cursor-follower,
-body:has(a:hover) .cursor-follower {
-  width: 56px;
-  height: 56px;
-  border-color: var(--rose);
+/* Outer rotating square ring */
+.cursor-follower::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--rose);
+  border-radius: 6px;
+  transform: rotate(0deg);
+  animation: cursorSpin 4s linear infinite;
+  opacity: 0.7;
+  box-shadow: 0 0 8px rgba(224,26,26,0.3);
+}
+
+/* Crosshair lines */
+.cursor-follower::after {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  background:
+    /* horizontal line */
+    linear-gradient(to right, transparent 0%, transparent calc(50% - 22px),
+      var(--rose) calc(50% - 22px), var(--rose) calc(50% - 16px),
+      transparent calc(50% - 16px), transparent calc(50% + 16px),
+      var(--rose) calc(50% + 16px), var(--rose) calc(50% + 22px),
+      transparent calc(50% + 22px), transparent 100%),
+    /* vertical line */
+    linear-gradient(to bottom, transparent 0%, transparent calc(50% - 22px),
+      var(--rose) calc(50% - 22px), var(--rose) calc(50% - 16px),
+      transparent calc(50% - 16px), transparent calc(50% + 16px),
+      var(--rose) calc(50% + 16px), var(--rose) calc(50% + 22px),
+      transparent calc(50% + 22px), transparent 100%);
+  opacity: 0.7;
+}
+
+@keyframes cursorSpin {
+  0%   { transform: rotate(0deg)   scale(1);    border-color: var(--rose); }
+  25%  { transform: rotate(90deg)  scale(1.08); border-color: #ff4444; }
+  50%  { transform: rotate(180deg) scale(1);    border-color: var(--rose); }
+  75%  { transform: rotate(270deg) scale(1.08); border-color: #ff4444; }
+  100% { transform: rotate(360deg) scale(1);    border-color: var(--rose); }
+}
+
+/* Hover state — scale up and pulse */
+.cursor.hovered {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  box-shadow: 0 0 16px rgba(224,26,26,1), 0 0 32px rgba(224,26,26,0.6);
+}
+
+.cursor-follower.hovered::before {
+  animation: cursorSpin 0.8s linear infinite, cursorPulse 0.6s ease-in-out infinite alternate;
+  border-color: #ff4444;
+  border-width: 2px;
+  border-radius: 50%;
+  inset: -8px;
+  opacity: 1;
+}
+
+@keyframes cursorPulse {
+  from { box-shadow: 0 0 8px rgba(224,26,26,0.4); }
+  to   { box-shadow: 0 0 24px rgba(224,26,26,0.9), 0 0 40px rgba(224,26,26,0.3); }
+}
+
+/* Click burst */
+.cursor.clicked {
+  transform: translate(-50%, -50%) scale(2.5);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* ══════════════════════════════════════
@@ -833,142 +903,4 @@ section { position: relative; z-index: 1; }
 
 /* ══════════════════════════════════════
    TESTIMONIALS
-══════════════════════════════════════ */
-.testimonials {
-  padding: 6rem 4rem;
-  background: var(--pink-0);
-  overflow: hidden;
-}
-
-.testi-track {
-  display: flex;
-  gap: 1.5rem;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.testi-card {
-  min-width: calc(33.333% - 1rem);
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 2rem;
-  border: 1px solid var(--border);
-  transition: var(--transition);
-  flex-shrink: 0;
-}
-
-.testi-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-card);
-}
-
-.testi-stars {
-  color: var(--rose);
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-}
-
-.testi-card > p {
-  font-size: 0.92rem;
-  font-style: italic;
-  color: var(--text-mid);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-.testi-author {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.author-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--rose), var(--pink-3));
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-.testi-author strong {
-  display: block;
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-dark);
-}
-
-.testi-author span {
-  font-size: 0.78rem;
-  color: var(--text-light);
-}
-
-.testi-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 2.5rem;
-}
-
-.testi-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--pink-2);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.testi-dot.active {
-  background: var(--rose);
-  width: 24px;
-  border-radius: 4px;
-}
-
-/* ══════════════════════════════════════
-   CONTACT
-══════════════════════════════════════ */
-.contact {
-  padding: 6rem 4rem;
-  background: #fff;
-}
-
-.contact-inner {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.contact-form {
-  margin-top: 1rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.form-group label {
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-mid);
-}
-
-.form-group input,
-.form-group textarea {
-  background: var(--pink-0);
-  border: 1px solid var(--border);}
+═════════════════
