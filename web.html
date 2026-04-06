@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noura — Premium Dry Fruits</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">✦</span> Noura
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-cta">Shop Now</button>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-bg-text">NOURA</div>
+    <div class="hero-content">
+      <p class="hero-tagline reveal-up">Nature's Finest Gifts</p>
+      <h1 class="hero-title reveal-up delay-1">Premium <em>Dry Fruits</em><br/>Curated for You</h1>
+      <p class="hero-sub reveal-up delay-2">Hand-selected from the world's finest orchards.<br/>Pure. Natural. Extraordinary.</p>
+      <div class="hero-btns reveal-up delay-3">
+        <a href="#products" class="btn-primary">Explore Collection</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="bowl-ring ring-1"></div>
+      <div class="bowl-ring ring-2"></div>
+      <div class="bowl-ring ring-3"></div>
+      <div class="hero-bowl">
+        <div class="float-item fi-1">🌰</div>
+        <div class="float-item fi-2">🥜</div>
+        <div class="float-item fi-3">🍇</div>
+        <div class="float-item fi-4">🫐</div>
+        <div class="float-item fi-5">🥝</div>
+        <div class="bowl-center">🍁</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE STRIP ── -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span>✦ Premium Quality</span><span>✦ 100% Natural</span><span>✦ No Preservatives</span>
+      <span>✦ Handpicked</span><span>✦ Free Delivery Above ₹999</span><span>✦ Eco Packaging</span>
+      <span>✦ Premium Quality</span><span>✦ 100% Natural</span><span>✦ No Preservatives</span>
+      <span>✦ Handpicked</span><span>✦ Free Delivery Above ₹999</span><span>✦ Eco Packaging</span>
+    </div>
+  </div>
+
+  <!-- ── PRODUCTS ── -->
+  <section class="products" id="products">
+    <div class="section-header">
+      <p class="section-label">Our Collection</p>
+      <h2 class="section-title">Finest <em>Selections</em></h2>
+      <p class="section-sub">Each product is carefully sourced, cleaned, and packaged to preserve maximum freshness and nutrition.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="nuts">Nuts</button>
+      <button class="filter-btn" data-filter="berries">Berries</button>
+      <button class="filter-btn" data-filter="seeds">Seeds</button>
+      <button class="filter-btn" data-filter="mixed">Mixed</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+
+      <div class="product-card" data-category="nuts">
+        <div class="card-badge">Bestseller</div>
+        <div class="card-emoji">🥜</div>
+        <div class="card-glow"></div>
+        <h3>Premium Cashews</h3>
+        <p>W240 grade, creamy and rich. Sourced from Goa's finest farms.</p>
+        <div class="card-footer">
+          <span class="price">₹ 649 <small>/250g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="nuts">
+        <div class="card-emoji">🌰</div>
+        <div class="card-glow"></div>
+        <h3>Kashmiri Almonds</h3>
+        <p>Thin-skinned, naturally sweet. Grown at 2,000m altitude in Kashmir.</p>
+        <div class="card-footer">
+          <span class="price">₹ 749 <small>/250g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+      <div class="product-card featured" data-category="berries">
+        <div class="card-badge new">New</div>
+        <div class="card-emoji">🍇</div>
+        <div class="card-glow"></div>
+        <h3>Golden Raisins</h3>
+        <p>Sun-dried Afghan grapes. Plump, juicy and naturally sweet.</p>
+        <div class="card-footer">
+          <span class="price">₹ 349 <small>/250g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="berries">
+        <div class="card-emoji">🫐</div>
+        <div class="card-glow"></div>
+        <h3>Dried Blueberries</h3>
+        <p>Antioxidant-rich, no added sugar. Direct from Canadian farms.</p>
+        <div class="card-footer">
+          <span class="price">₹ 899 <small>/200g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="seeds">
+        <div class="card-emoji">🌻</div>
+        <div class="card-glow"></div>
+        <h3>Pumpkin Seeds</h3>
+        <p>Hulled, roasted lightly. Packed with zinc and magnesium.</p>
+        <div class="card-footer">
+          <span class="price">₹ 299 <small>/250g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="mixed">
+        <div class="card-badge">Popular</div>
+        <div class="card-emoji">🍱</div>
+        <div class="card-glow"></div>
+        <h3>Royal Mix</h3>
+        <p>Almonds, cashews, pistachios, walnuts and raisins in one luxurious blend.</p>
+        <div class="card-footer">
+          <span class="price">₹ 999 <small>/500g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="nuts">
+        <div class="card-emoji">🫘</div>
+        <div class="card-glow"></div>
+        <h3>Walnuts — Halves</h3>
+        <p>Brain-boosting omega-3s. Paper-shell Chilean walnuts, whole halves.</p>
+        <div class="card-footer">
+          <span class="price">₹ 579 <small>/250g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="seeds">
+        <div class="card-emoji">🌿</div>
+        <div class="card-glow"></div>
+        <h3>Chia Seeds</h3>
+        <p>Certified organic, cold-processed. Perfect for smoothies and puddings.</p>
+        <div class="card-footer">
+          <span class="price">₹ 269 <small>/200g</small></span>
+          <button class="add-cart">Add +</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── STATS STRIP ── -->
+  <section class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num" data-target="50">0</span><span class="stat-sym">+</span>
+      <p>Products</p>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="12000">0</span><span class="stat-sym">+</span>
+      <p>Happy Customers</p>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="15">0</span><span class="stat-sym">+</span>
+      <p>Countries Sourced</p>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="100">0</span><span class="stat-sym">%</span>
+      <p>Natural</p>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <div class="about-visual">
+      <div class="about-ring ar1"></div>
+      <div class="about-ring ar2"></div>
+      <div class="about-img-box">
+        <div class="about-emoji-grid">
+          <span>🌿</span><span>🥜</span><span>🫐</span>
+          <span>🌰</span><span>✨</span><span>🍇</span>
+          <span>🌻</span><span>🫘</span><span>🍁</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">Born from a<br/><em>Love of Purity</em></h2>
+      <p>Noura was founded with one belief — that the finest things in nature deserve to be delivered without compromise. We travel the world's orchards, forests, and farms to bring you dry fruits that are free of additives, chemicals, and shortcuts.</p>
+      <p>Every batch is third-party tested, cold-stored, and packed in biodegradable packaging — because the planet matters as much as your health.</p>
+      <div class="about-perks">
+        <div class="perk"><span>🧪</span> Lab Tested</div>
+        <div class="perk"><span>♻️</span> Eco Packed</div>
+        <div class="perk"><span>🚚</span> Fast Delivery</div>
+        <div class="perk"><span>🔒</span> Secure Orders</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-header">
+      <p class="section-label">Reviews</p>
+      <h2 class="section-title">What People <em>Say</em></h2>
+    </div>
+    <div class="testi-track" id="testiTrack">
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"The Kashmiri almonds are unlike anything I've had. Thin-skinned, incredibly fresh. Reordered three times already."</p>
+        <div class="testi-author">
+          <div class="author-avatar">P</div>
+          <div><strong>Priya M.</strong><span>Mumbai</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Packaging is stunning and the Royal Mix is just perfect for gifting. Everyone at the office loved it!"</p>
+        <div class="testi-author">
+          <div class="author-avatar">R</div>
+          <div><strong>Rahul K.</strong><span>Delhi</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Finally a brand I trust. No oil coating, no preservatives. My kids eat these daily. 10/10 would recommend."</p>
+        <div class="testi-author">
+          <div class="author-avatar">S</div>
+          <div><strong>Sunita R.</strong><span>Bangalore</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p>"Dried blueberries are amazing. Arrived fresh and well-sealed. Delivery was super quick too. Will buy again!"</p>
+        <div class="testi-author">
+          <div class="author-avatar">A</div>
+          <div><strong>Arjun T.</strong><span>Pune</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="section-header">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">We'd Love to <em>Hear You</em></h2>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Priya Sharma" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="hello@example.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="What's this about?" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell us how we can help..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary submit-btn">Send Message ✦</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="logo-icon">✦</span> Noura</div>
+        <p>Pure. Natural. Premium.<br/>Delivering nature's best to your doorstep.</p>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <a href="#">Nuts</a>
+        <a href="#">Berries</a>
+        <a href="#">Seeds</a>
+        <a href="#">Mixed Packs</a>
+        <a href="#">Gift Sets</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Quality Promise</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <a href="#">Track Order</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Noura Dry Fruits. All rights reserved.</p>
+      <p>Privacy Policy · Terms of Service</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span>✓</span> Added to cart!
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
